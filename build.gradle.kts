@@ -45,7 +45,6 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     testImplementation(kotlin("test"))
     testImplementation("net.kyori:adventure-text-serializer-plain:4.14.0")
-    testImplementation("net.kyori:adventure-text-serializer-legacy:4.14.0")
 }
 
 tasks.processResources {
