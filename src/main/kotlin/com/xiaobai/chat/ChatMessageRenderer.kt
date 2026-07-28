@@ -1,18 +1,17 @@
 package com.xiaobai.chat
 
-import net.kyori.adventure.text.Component
+import org.bukkit.ChatColor
 
 class ChatMessageRenderer(
     private val colorParser: LegacyColorParser,
 ) {
-    fun render(style: TeamChatStyle, displayName: Component, message: Component): Component {
+    fun render(style: TeamChatStyle, playerName: String, message: String): String {
         val parsedMessage = colorParser.parse(message)
-
-        return Component.empty()
-            .append(style.prefix)
-            .append(displayName.color(style.playerNameColor))
-            .append(style.suffix)
-            .append(Component.text(": "))
-            .append(parsedMessage.component)
+        val messageText = if (parsedMessage.hasFormatting) {
+            parsedMessage.text
+        } else {
+            ChatColor.WHITE.toString() + parsedMessage.text
+        }
+        return style.prefix + style.playerNameColor + playerName + ChatColor.RESET + style.suffix + ": " + messageText
     }
 }

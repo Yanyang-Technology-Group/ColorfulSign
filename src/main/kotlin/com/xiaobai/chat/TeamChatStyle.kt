@@ -1,19 +1,17 @@
 package com.xiaobai.chat
 
-import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.format.NamedTextColor
-import net.kyori.adventure.text.format.TextColor
+import org.bukkit.ChatColor
 
 data class TeamChatStyle(
-    val prefix: Component,
-    val playerNameColor: TextColor,
-    val suffix: Component,
+    val prefix: String,
+    val playerNameColor: ChatColor,
+    val suffix: String,
 ) {
     companion object {
         fun none(): TeamChatStyle = TeamChatStyle(
-            prefix = Component.empty(),
-            playerNameColor = NamedTextColor.WHITE,
-            suffix = Component.empty(),
+            prefix = "",
+            playerNameColor = ChatColor.WHITE,
+            suffix = "",
         )
     }
 }

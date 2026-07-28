@@ -1,39 +1,29 @@
 package com.xiaobai.chat
 
-import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.format.NamedTextColor
-import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class SignListenerTest {
     private val parser = LegacyColorParser()
-    private val plainText = PlainTextComponentSerializer.plainText()
 
     @Test
     fun `applies color codes to sign lines`() {
-        val line = Component.text("&cHello")
-        val processed = parser.parse(plainText.serialize(line)).component
+        val parsed = parser.parse("&cHello")
 
-        assertEquals(NamedTextColor.RED, processed.color())
-        assertEquals("Hello", plainText.serialize(processed))
+        assertEquals("§cHello", parsed.text)
     }
 
     @Test
-    fun `leaves unformatted sign lines as white`() {
-        val line = Component.text("Hello")
-        val processed = parser.parse(plainText.serialize(line)).component
+    fun `leaves unformatted sign lines unchanged`() {
+        val parsed = parser.parse("Hello")
 
-        assertEquals(NamedTextColor.WHITE, processed.color())
-        assertEquals("Hello", plainText.serialize(processed))
+        assertEquals("Hello", parsed.text)
     }
 
     @Test
     fun `does not process ordinary ampersands on sign lines`() {
-        val line = Component.text("A & B")
-        val processed = parser.parse(plainText.serialize(line)).component
+        val parsed = parser.parse("A & B")
 
-        assertEquals(NamedTextColor.WHITE, processed.color())
-        assertEquals("A & B", plainText.serialize(processed))
+        assertEquals("A & B", parsed.text)
     }
 }
