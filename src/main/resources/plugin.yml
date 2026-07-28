@@ -1,0 +1,5 @@
+name: ColorfulSign
+version: ${version}
+main: com.xiaobai.ColorfulSignPlugin
+api-version: '1.20'
+
