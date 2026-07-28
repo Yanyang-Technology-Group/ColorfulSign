@@ -31,7 +31,7 @@ class ColorfulSignPlugin : JavaPlugin() {
         console.sendMessage("${da}╔════════════════════════════════════════╗")
         console.sendMessage("${ChatColor.GOLD}           ◆ ColorFulSign 插件 ◆")
         console.sendMessage("${da}╠════════════════════════════════════════╣")
-        console.sendMessage("${ChatColor.AQUA}    插件版本: ${ChatColor.GREEN}v${pluginMeta.version}")
+        console.sendMessage("${ChatColor.AQUA}    插件版本: ${ChatColor.GREEN}v${description.version}")
         console.sendMessage("${ChatColor.AQUA}    技术支持: ${ChatColor.BLUE}晏阳技术组")
         console.sendMessage("${da}╠════════════════════════════════════════╣")
         console.sendMessage("${ChatColor.LIGHT_PURPLE}  感谢您支持 晏阳技术组！")
