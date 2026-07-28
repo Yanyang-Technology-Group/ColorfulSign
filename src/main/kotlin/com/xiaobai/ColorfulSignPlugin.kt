@@ -3,14 +3,22 @@ package com.xiaobai
 import com.xiaobai.chat.ChatListener
 import com.xiaobai.chat.ChatMessageRenderer
 import com.xiaobai.chat.LegacyColorParser
+import com.xiaobai.chat.SignListener
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.plugin.java.JavaPlugin
 
 class ColorfulSignPlugin : JavaPlugin() {
     override fun onEnable() {
+        val colorParser = LegacyColorParser()
+
         server.pluginManager.registerEvents(
-            ChatListener(this, ChatMessageRenderer(LegacyColorParser())),
+            ChatListener(this, ChatMessageRenderer(colorParser)),
+            this,
+        )
+
+        server.pluginManager.registerEvents(
+            SignListener(colorParser),
             this,
         )
 
