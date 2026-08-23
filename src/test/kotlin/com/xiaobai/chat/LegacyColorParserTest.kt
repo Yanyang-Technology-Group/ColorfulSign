@@ -31,4 +31,20 @@ class LegacyColorParserTest {
         assertTrue(parsed.hasFormatting)
         assertEquals("§aHello §lWorld", parsed.text)
     }
+
+    @Test
+    fun `parses hex rgb codes`() {
+        val parsed = parser.parse("&#ff0000Hello")
+
+        assertTrue(parsed.hasFormatting)
+        assertEquals("§x§f§f§0§0§0§0Hello", parsed.text)
+    }
+
+    @Test
+    fun `parses legacy hex code format`() {
+        val parsed = parser.parse("&x&f&f&0&0&0&0Hello")
+
+        assertTrue(parsed.hasFormatting)
+        assertEquals("§x§f§f§0§0§0§0Hello", parsed.text)
+    }
 }
