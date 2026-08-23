@@ -1,5 +1,6 @@
 name: ColorfulSign
 version: ${version}
 main: com.xiaobai.ColorfulSignPlugin
+# 保持最低 api-version，使插件兼容 Paper 1.20.1 - 26.2 全版本
 api-version: '1.20'
 
