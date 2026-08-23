@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.xiaobai"
-version = "26.7.4-SNAPSHOT"
+version = "26.7.5-SNAPSHOT"
 
 java {
     toolchain {

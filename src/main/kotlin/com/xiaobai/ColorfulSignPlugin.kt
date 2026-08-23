@@ -21,7 +21,6 @@ class ColorfulSignPlugin : JavaPlugin() {
             this,
         )
 
-        logger.info("告示牌颜色码监听已启用：放置或编辑告示牌时输入 &c、&#FF0000 等颜色码即可上色。")
         logger.info("核心插件已启用。")
         displayStartupMessage()
     }

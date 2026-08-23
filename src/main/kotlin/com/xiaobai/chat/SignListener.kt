@@ -1,5 +1,6 @@
 package com.xiaobai.chat
 
+import org.bukkit.block.Sign
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.SignChangeEvent
@@ -11,20 +12,27 @@ class SignListener(
 ) : Listener {
     @EventHandler(ignoreCancelled = true)
     fun onSignChange(event: SignChangeEvent) {
-        var changed = false
+        val original = (0 until 4).map { event.getLine(it) ?: "" }
+        val parsed = original.map { colorParser.parse(it).text }
+        if (parsed == original) {
+            return
+        }
+
         for (i in 0 until 4) {
-            val line = event.getLine(i) ?: continue
-            val parsed = colorParser.parse(line)
-            if (parsed.text != line) {
-                event.setLine(i, parsed.text)
-                changed = true
+            event.setLine(i, parsed[i])
+        }
+
+        // 兜底：事件落库后直接写回告示牌并强制刷新客户端，
+        // 兼容部分服务端不应用事件修改或客户端显示陈旧的情况。
+        plugin.server.scheduler.runTask(plugin, Runnable {
+            val state = event.block.state
+            if (state is Sign) {
+                val side = state.getSide(event.side)
+                for (i in 0 until 4) {
+                    side.setLine(i, parsed[i])
+                }
+                state.update(true, true)
             }
-        }
-        if (changed) {
-            val location = event.block.location
-            plugin.logger.info(
-                "已为告示牌应用颜色码：${location.world.name} (${location.blockX}, ${location.blockY}, ${location.blockZ})",
-            )
-        }
+        })
     }
 }
