@@ -40,7 +40,7 @@
 
 ![Supports](https://cdn.modrinth.com/data/cached_images/f869434d6e8fce6a777bcd2c3b5a68d3f5290283.png)
 
-### Or you can use #xxxxxx (like " &#ff0000Hello! "  =  "<font color=red> Hello! </font>")
+### Or you can use #xxxxxx (like " &#ff0000Hello! "  =  "Hello! (It's Red)")
 
 ## Build
 ```bash
@@ -100,7 +100,7 @@ The output artifact is located at `build/libs/ColorfulSign-*.jar`
 
 ![支持](https://cdn.modrinth.com/data/cached_images/f869434d6e8fce6a777bcd2c3b5a68d3f5290283.png)
 
-### 或者你可以使用 #xxxxxx（例如“ &#ff0000Hello! ” = “<font color=red> Hello! </font>”）
+### 或者你可以使用 #xxxxxx（例如“ &#ff0000Hello! ” = “Hello! (红色的)”）
 
 ## 构建
 ```bash
