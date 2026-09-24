@@ -13,9 +13,8 @@ class ChatListener(
     fun onPlayerChat(event: AsyncPlayerChatEvent) {
         val player = event.player
         val style = player.chatStyle()
-        val message = event.message
-
-        event.format = messageRenderer.render(style, player.name, message)
+        event.message = messageRenderer.formatMessage(event.message)
+        event.format = messageRenderer.format(style, player.name)
     }
 
     private fun Player.chatStyle(): TeamChatStyle {

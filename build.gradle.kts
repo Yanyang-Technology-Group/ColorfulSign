@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.xiaobai"
-version = "26.7.5-SNAPSHOT"
+version = "26.7.6-SNAPSHOT"
 
 java {
     toolchain {
@@ -45,6 +45,7 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     testImplementation("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
     testImplementation(kotlin("test"))
+    testImplementation("org.mockito:mockito-core:5.14.2")
 }
 
 tasks.processResources {

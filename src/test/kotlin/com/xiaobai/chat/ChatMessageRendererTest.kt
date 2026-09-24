@@ -25,4 +25,11 @@ class ChatMessageRendererTest {
 
         assertEquals("§fAlex§r: §fHello", rendered)
     }
+
+    @Test
+    fun `percent signs in team decorations remain literal`() {
+        val style = TeamChatStyle("100% ", org.bukkit.ChatColor.GOLD, " %s")
+
+        assertEquals("100% §6Alex§r %s: §f1", renderer.render(style, "Alex", "1"))
+    }
 }
